@@ -2,13 +2,15 @@
 
 @import 'mixins.scss';
 
-//remove all margins and set base font styles
+//Setup styles: remove all margins and set base font styles
 *{
     margin: 0;
     border: 0;
     padding: 0;
+    box-sizing: border-box;
     font-size: 16px;
     font-family: 'Lato', sans-serif;
+    color: $dark;
 }
 
 body{
@@ -22,18 +24,35 @@ body{
     nav{
         @include flex($align: center, $justify:space-between);
         height: 3em;
-        padding: 1em;
+        padding: 0.75em;
         background: $faint;
         *{height: 100%}
     
         .menu{
             @include flex($align:center);
-            font-size: 2em;
+            font-size: 1.5em;
         }
     }
 
     main{
         flex-grow: 1;
+        *{
+            padding: 2em;
+            height: 100%;
+        }
+        .intro{
+            @include flex($direction: column, $justify:center, $align:center);
+            gap: 2em;
+            h1{
+                font-size: 1.75em;
+                text-align:center;
+            }
+            button{
+                width: 100%;
+                font-size: 1.25em;
+                @include button-1;
+            }
+        }
     }
 }
 
