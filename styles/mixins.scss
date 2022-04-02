@@ -1,0 +1,52 @@
+//VARIABLES
+$brand: linear-gradient(90deg, #FA6CA8 0%, #F5987B 100%);
+$dark: #111;
+$light: #888;
+$faint: #F8F5F5;
+
+//MIXINS
+//Simplified CSS Grid
+@mixin grid($columns){
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr)
+}
+//Simplified Flexbox
+@mixin flex($direction:row, $align:stretch, $justify:flex-start){
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin button-1{
+    padding: 1em;
+    color: white;
+    font-weight: 800;
+    border-radius: 10em;
+    background: $brand;
+}
+// Mobile first media query
+// 601 - 900 ipad portrait, phone landscape
+@mixin tablet-portrait-up{
+    @media (min-width: 601px){ @content;}
+}
+
+// 901 - 1200 ipad landscape, ipad pro portrait
+@mixin tablet-landscape-up{
+    @media (min-width: 901px){ @content;}
+}
+
+// 1201 - 1280 mdpi
+@mixin mdpi-up{
+    @media (min-width: 1201px){ @content;}
+}
+
+// 1281 - 1440 hdpi, ipad pro landscape
+@mixin hdpi-up{
+    @media (min-width: 1281px){ @content;}
+}
+
+// >= 1441 widescreen
+@mixin widescreen-up{
+    @media (min-width: 1441px){ @content;}
+}
