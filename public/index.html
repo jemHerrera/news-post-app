@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Jem's Challenge</title>
-    <!-- https://drive.google.com/uc?export=view&id=1RVaCxeK8w0OW7ZXscZHVdDdFkcxWnfNf -->
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/rabbit-head.png">
+    <link rel="icon" type="image/x-icon" href="https://drive.google.com/uc?export=view&id=1RVaCxeK8w0OW7ZXscZHVdDdFkcxWnfNf">
     <!-- LINK to CSS -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- LATO Font -->
@@ -19,18 +19,33 @@
       <nav>
         <span class="material-icons menu">menu</span>
         <!-- watch out for cors -->
-        <img class="logo" src="../assets/logo.png">
-        <img class="profile-picture" src="../assets/rabbit-head.png">
+        <img class="logo" src="https://drive.google.com/uc?export=view&id=1Atl0bl0-b85dJykSKwxMSr-G1-jj3zSu">
+        <img class="profile-picture" src="https://drive.google.com/uc?export=view&id=1RVaCxeK8w0OW7ZXscZHVdDdFkcxWnfNf">
       </nav>
+
+      <!-- 
+        <main> contains 2 main panels: intro and feed
+        Intro: Display initially, when no posts are added yet.
+        Feed: Contains all the posts. Do not display initially. Display only if a single post exists. 
+      -->
+      
       <main>
         <div class="intro">
-          <h1>Add a new post to get started</h1>
+          <h1>Add a new post to get started..</h1>
           <button class="button-1">Create a new post</button>
         </div>
-        <div class="main"></div>
+        <div class="feed"></div>
+      </main>
+
+      <!-- 
+        <aside> contains 2 modals: Image View and New Post 
+        Image View Modal: Show full image. Display when user clicks on an image
+        New Post Modal: Display when user clicks on new post button. Contains the form to add text, image or both.
+      -->
+      <aside>
         <div class="image-view"></div>
         <div class="new-post"></div>
-      </main>
+      </aside>
   </body>
 
   <!-- JS -->
