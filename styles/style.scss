@@ -36,21 +36,58 @@ body{
 
     main{
         flex-grow: 1;
-        *{
-            padding: 2em;
+        position: relative;
+
+        >div{
+            position: absolute;
             height: 100%;
         }
         .intro{
             @include flex($direction: column, $justify:center, $align:center);
             gap: 2em;
+            padding: 3.5em;
             h1{
-                font-size: 1.75em;
-                text-align:center;
+                font-size: 1.6em;
+                text-align: center;
+                font-weight: 400;
             }
             button{
                 width: 100%;
                 font-size: 1.25em;
+                margin-bottom: 5em;
                 @include button-1;
+            }
+        }
+    }
+
+    aside{
+        position: fixed;
+        top: 0;
+        left:0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        transform: translateY(100%);
+        transition: all 150ms ease-in-out;
+        background: white;
+
+        &.displayed{
+            transform: translateY(0);
+        }
+
+        &.new-post{
+            #images-preview{
+                @include flex();
+                gap: 1em;
+                li{
+                    border-radius: 5em;
+                    img{
+                        max-height: 10em;
+                    }
+                    .remove{
+                        
+                    }
+                }
             }
         }
     }

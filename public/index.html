@@ -1,3 +1,18 @@
+<!-- 
+COMPLETED
+Research on how to host locally using node
+install gulp and setup scss
+create wireframe on figma. Use helcim-ish brand colors and font
+use social media as references for ui/ux
+
+TO DO:
+figure out how to test on real device
+figure out how to link images properly
+scale up to tablet. Desktop will be almost same as tablet
+
+Link to Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untitled?node-id=2%3A2
+-->
+
 <!doctype html>
 <html>
   <head>
@@ -32,7 +47,7 @@
       <main>
         <div class="intro">
           <h1>Add a new post to get started..</h1>
-          <button class="button-1">Create a new post</button>
+          <button class="button-1" onclick="toggleElement('.new-post', true)">Create a new post</button>
         </div>
         <div class="feed"></div>
       </main>
@@ -42,10 +57,14 @@
         Image View Modal: Show full image. Display when user clicks on an image
         New Post Modal: Display when user clicks on new post button. Contains the form to add text, image or both.
       -->
-      <aside>
-        <div class="image-view"></div>
-        <div class="new-post"></div>
+      <aside class="new-post">
+        ​<textarea id="text" rows="10" cols="70"></textarea>
+        <input id="images-upload" type="file" multiple accept="image/*"/>
+        <button>Post</button>
+        <ul id="images-preview"></ul>
       </aside>
+
+      <aside class="image-view"></aside>
   </body>
 
   <!-- JS -->
