@@ -355,6 +355,8 @@ body{
     @include tablet-portrait-up{
         &, aside{
             max-width: 601px;
+        }
+        main, nav, aside{
             border-right: 1px solid $faint;
         }
 
