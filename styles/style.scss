@@ -163,13 +163,17 @@ body{
         left:0;
         right: 0;
         bottom: 0;
+        opacity: 0;
         overflow: hidden;
         transform: translateY(100%);
         transition: all 150ms ease-in-out;
         background: white;
         z-index: 3;
 
-        &.displayed{transform: translateY(0);}
+        &.displayed{
+            transform: translateY(0);
+            opacity: 1;
+        }
 
         &.new-post{
             gap: 1em;
@@ -208,6 +212,8 @@ body{
                 .inner{
                     padding-top: 0.75em;
                     flex-grow: 1;
+                    outline: none !important;
+                    
                     textarea{
                         width: 100%;
                         resize: none;
@@ -215,10 +221,6 @@ body{
                         min-height: 50px;
                         max-height: 300px;
                         overflow: auto;
-
-                        &:focus-visible{
-                            outline: none;
-                        }
                     }
                 }
             }
@@ -226,7 +228,6 @@ body{
             .images-preview-container{
                 overflow-x: auto;
                 scroll-behavior: smooth;
-                margin: 1em;
 
                 #images-preview{
                     @include flex;
@@ -290,7 +291,7 @@ body{
                 img{
                     width: 100%;
                     max-height: 100%;
-                    object-fit: cover;
+                    object-fit:contain;
                 }
             }
             .preview-details{
@@ -354,7 +355,7 @@ body{
     // for screen width 601px and above, limit width
     @include tablet-portrait-up{
         &, aside{
-            max-width: 601px;
+            max-width: 1000px;
         }
         main, nav, aside{
             border-right: 1px solid $faint;
