@@ -177,7 +177,8 @@ body{
 
         &.new-post{
             gap: 1em;
-            overflow: auto;
+            overflow-y: auto;
+            overflow-x: hidden;
             header{
                 @include flex($align:center, $justify:space-between);
                 padding: 0.5em;
@@ -213,7 +214,7 @@ body{
                     padding-top: 0.75em;
                     flex-grow: 1;
                     outline: none !important;
-                    
+
                     textarea{
                         width: 100%;
                         resize: none;
