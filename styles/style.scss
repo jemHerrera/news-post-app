@@ -215,7 +215,6 @@ body{
                 .inner{
                     padding-top: 0.75em;
                     flex-grow: 1;
-                    outline: none !important;
 
                     textarea{
                         width: 100%;
@@ -224,6 +223,7 @@ body{
                         min-height: 50px;
                         max-height: 300px;
                         overflow: auto;
+                        outline: none !important;
                     }
                 }
             }
