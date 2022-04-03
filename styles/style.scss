@@ -231,7 +231,7 @@ body{
             .images-preview-container{
                 overflow-x: auto;
                 scroll-behavior: smooth;
-                margin: 1em 0;
+                padding: 1em 0;
 
                 #images-preview{
                     @include flex;
