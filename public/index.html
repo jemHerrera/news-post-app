@@ -2,14 +2,14 @@
 COMPLETED
 Research on how to host locally using node
 install gulp and setup scss
-create wireframe on figma. Use helcim-ish brand colors and font
-use social media as references for ui/ux
+create wireframe on figma. Use helcim-ish brand style
+use social media as references for ux
 
 TO DO:
 figure out how to test on real device
-figure out how to link images properly
+se landscape
 scale up to tablet. Desktop will be almost same as tablet
-
+reset initial height of text area after it expanded from previous long input
 Link to Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untitled?node-id=2%3A2
 -->
 
@@ -20,54 +20,88 @@ Link to Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untit
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Jem's Challenge</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="https://drive.google.com/uc?export=view&id=1RVaCxeK8w0OW7ZXscZHVdDdFkcxWnfNf">
-    <!-- LINK to CSS -->
+    <!-- Assets -->
+    <link rel="icon" type="image/x-icon" href="icon.png">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- LATO Font -->
-    <style>@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');</style>
-    <!-- SVG ICONS -->
+    <style>@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');</style>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
 
   <body>
       <nav>
         <span class="material-icons menu">menu</span>
-        <!-- watch out for cors -->
-        <img class="logo" src="https://drive.google.com/uc?export=view&id=1Atl0bl0-b85dJykSKwxMSr-G1-jj3zSu">
-        <img class="profile-picture" src="https://drive.google.com/uc?export=view&id=1RVaCxeK8w0OW7ZXscZHVdDdFkcxWnfNf">
+        <h1 class="logo"><a href="/"><span class="jem">jem.</span><span class="challenge">challenge</span></a></h1>
+        <a href="https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Jem's-Helcim-Challenge?node-id=0%3A1" target="_blank"><img class="profile-picture" src="icon.png"></a>
       </nav>
 
       <!-- 
         <main> contains 2 main panels: intro and feed
-        Intro: Display initially, when no posts are added yet.
-        Feed: Contains all the posts. Do not display initially. Display only if a single post exists. 
+        Intro: Display initially, when no posts are added yet. Remove once posts are added
+        Feed: Contains all the posts. Display only if a single post exists. 
       -->
-      
       <main>
         <div class="intro">
-          <h1>Add a new post to get started..</h1>
-          <button class="button-1" onclick="toggleElement('.new-post', true)">Create a new post</button>
+          <h2>What's on your mind? Compose a post to get started..</h2>
+          <button onclick="toggleElement('.new-post', true)">Create a new post</button>
         </div>
-        <div class="feed"></div>
+        <div class="feed">
+          <div class="feed-container">
+            <!-- 
+            Posts are rendered here via js. each post should look like this:
+            <div class="post">
+              <img class="profile" src="icon.png">
+              <div class="post-details">
+                  <div class="post-header">
+                      <p class="username">Me</p>
+                      <p class="handle">@myself</p>
+                      <p class="timestamp"></p>
+                  </div>
+                  <p class="post-text"></p>
+                  <ul class="images-container"></ul>
+              </div>
+            </div>
+          -->
+          </div>
+          <button class="new-post-button" onclick="toggleElement('.new-post', true)">Create a new post</button>
+        </div>
       </main>
 
-      <!-- 
-        <aside> contains 2 modals: Image View and New Post 
-        Image View Modal: Show full image. Display when user clicks on an image
-        New Post Modal: Display when user clicks on new post button. Contains the form to add text, image or both.
-      -->
+      <!-- New Post Modal: Display when user clicks on new post button. Contains the form to add text, image or both.-->
       <aside class="new-post">
-        ​<textarea id="text" rows="10" cols="70"></textarea>
-        <input id="images-upload" type="file" multiple accept="image/*"/>
-        <button>Post</button>
-        <ul id="images-preview"></ul>
+        <header>
+          <button class="cancel" onclick="resetInput()">Cancel</button>
+          <button id="post" class="disabled" onclick="post()">Post</button>
+        </header>
+        <div class="work-area">
+          <img class="profile-icon" src="icon.png">
+          <div class="inner">
+            ​<textarea id="text" placeholder="What's on your mind?" oninput="checkInput();autoHeight(this)"></textarea>
+          </div>
+        </div>
+        <div class="images-preview-container">
+          <ul id="images-preview"></ul>
+        </div>
+        <footer>
+          <label for="images-upload"><span class="material-icons image">image</span></label>
+          <input id="images-upload" type="file" multiple accept="image/*"/>
+        </footer>
       </aside>
 
-      <aside class="image-view"></aside>
+      <!-- Image View Modal: Show full image. Display when user clicks on an image on the feed -->
+      <aside class="image-view">
+        <span class="material-icons close" onclick="toggleElement('.image-view', false)">close</span>
+            <img class="preview-image" src="">
+            <div class="preview-details">
+              <div class="preview-header">
+                  <p class="username">Me</p>
+                  <p class="handle">@myself</p>
+                  <p class="preview-timestamp"></p>
+              </div>
+              <p class="preview-text"></p>
+            </div>
+      </aside>
   </body>
 
   <!-- JS -->
   <script src="main.js"></script>
 </html>
-
