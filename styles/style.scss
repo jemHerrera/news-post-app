@@ -229,6 +229,7 @@ body{
             .images-preview-container{
                 overflow-x: auto;
                 scroll-behavior: smooth;
+                margin: 1em 0;
 
                 #images-preview{
                     @include flex;
@@ -257,7 +258,23 @@ body{
                         }
                     }
                 }
+
+                //horizontal scrollbar
+                &::-webkit-scrollbar {
+                    width: 0.25em;
+                    height: 0.25em;
+                }
+                  
+                &::-webkit-scrollbar-thumb {
+                    border-radius: 2px;
+                    background-color: $light;
+                }
+                
+                &::-webkit-scrollbar:vertical {
+                    display: none;
+                }
             }
+
             footer{
                 padding: 1em;
                 border-top: 1px solid $faint;
