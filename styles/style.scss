@@ -294,14 +294,15 @@ body{
                 }
             }
             .preview-details{
+                @include flex();
                 position: absolute;
                 bottom:0;
                 left:0;
                 background: $nav-background;
                 width: 100%;
-                @include flex();
                 padding: 1em;
                 gap: 0.75em;
+                border-top: 1px solid $faint;
                 .profile{
                     width: 2em;
                     height: 2em;
