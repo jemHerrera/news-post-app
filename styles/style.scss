@@ -78,6 +78,8 @@ body{
             width: 100%;
             position: relative;
             background: white;
+            display: none;
+            &.display{display: block;}
 
             .feed-container{
                 @include flex($direction:column-reverse);

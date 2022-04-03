@@ -120,8 +120,9 @@ function post(){
     })
     document.querySelector('.feed-container').appendChild(postContainer);
 
-    //hide intro
+    //hide intro, show
     if(document.querySelector('.intro')) document.querySelector('.intro').remove();
+    document.querySelector('.feed').classList.add('display');
 
     //clear new-post modal
     resetInput();
