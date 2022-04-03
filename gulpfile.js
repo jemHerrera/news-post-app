@@ -9,7 +9,7 @@ function compilescss() {
     .pipe(sass())
     .pipe(prefix('last 2 versions'))
     .pipe(minify())
-    .pipe(dest('public')) // change to your final/public directory
+    .pipe(dest('docs')) // change to your final/public directory
 };
 
 //watchtask

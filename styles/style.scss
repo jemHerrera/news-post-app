@@ -1,5 +1,4 @@
 // Link to Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untitled?node-id=2%3A2
-
 @import 'mixins.scss';
 
 //Setup styles: remove all margins and set base font styles
@@ -11,8 +10,7 @@
     font-size: 16px;
     font-family: 'Lato', sans-serif;
     color: $dark;
-}
-
+} 
 body{
     @include flex($direction:column);
     position: absolute;
@@ -197,6 +195,7 @@ body{
                     }
                 }
             }
+
             .work-area{
                 @include flex();
                 gap: 0.5em;
@@ -275,13 +274,84 @@ body{
                 }
             }
         }
+        &.image-view{
+            // @include flex($align:center);
+            .close{
+                position:absolute;
+                top: 0.5em;
+                left: 0.5em;
+                z-index: 2;
+            }
+            .image-wrapper{
+                width: 100%;
+                height: 100%;
+                padding: 3em 0;
+                @include flex($direction: column, $justify:center);
+                img{
+                    width: 100%;
+                    max-height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .preview-details{
+                position: absolute;
+                bottom:0;
+                left:0;
+                background: $nav-background;
+                width: 100%;
+                height: 10em;
+                @include flex();
+                padding: 2em 1em;
+                gap: 0.75em;
+                .profile{
+                    width: 3em;
+                    height: 3em;
+                }
+                .post-details{
+                    @include flex($direction:column);
+                    gap: 1em;
+                    .preview-header{
+                        @include flex($align:flex-end);
+                        .username{
+                            font-weight: 800;
+                        }
+                        .handle{
+                            font-size: 0.8em;
+                            font-family: 'Bitter', serif;
+                            color: $dark;
+                            @include flex($align:center);
+                            margin-left: 0.5em;
+
+                            &::after{
+                                content: '';
+                                display: inline-block;
+                                height: 0.4em;
+                                width: 0.4em;
+                                margin: 0 0.5em;
+                                border-radius: 1em;
+                                background: $light;
+                            }
+                        }
+                        .preview-timestamp{
+                            font-size: 0.8em;
+                            font-family: 'Bitter', serif;
+                            color: $dark;
+                        }
+                    }
+                    .preview-text {
+                        flex-grow: 1;
+                        display: -webkit-box;
+                        overflow: hidden;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                      }
+                }
+            }
+        }
     }
 
     // for screen width 601px and above, limit width
     @include tablet-portrait-up{
-        &{
-            background: $dark;
-        }
         &, aside{
             max-width: 601px;
             border-right: 1px solid $faint;

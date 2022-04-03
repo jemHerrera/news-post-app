@@ -12,6 +12,7 @@ scale up to tablet. Desktop will be almost same as tablet
 reset initial height of text area after it expanded from previous long input
 Link to Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untitled?node-id=2%3A2
 -->
+<!-- Github pages: jemherrera.github.io/news-post-app-->
 
 <!doctype html>
 <html>
@@ -90,15 +91,20 @@ Link to Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untit
       <!-- Image View Modal: Show full image. Display when user clicks on an image on the feed -->
       <aside class="image-view">
         <span class="material-icons close" onclick="toggleElement('.image-view', false)">close</span>
-            <img class="preview-image" src="">
-            <div class="preview-details">
-              <div class="preview-header">
-                  <p class="username">Me</p>
-                  <p class="handle">@myself</p>
-                  <p class="preview-timestamp"></p>
-              </div>
-              <p class="preview-text"></p>
+        <div class="image-wrapper">
+          <img class="preview-image" src="">
+        </div>
+        <div class="preview-details" onclick="toggleElement('.image-view', false)">
+          <img class="profile" src="icon.png">
+          <div class="post-details">
+            <div class="preview-header">
+                <p class="username">Me</p>
+                <p class="handle">@myself</p>
+                <p class="preview-timestamp"></p>
             </div>
+            <p class="preview-text"></p>
+          </div>
+        </div>
       </aside>
   </body>
 
