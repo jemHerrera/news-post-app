@@ -24,6 +24,9 @@ function autoHeight(element) {
     element.style.height = (element.scrollHeight)+"px";
 }
 
+// store uploaded image data
+stagedImages = [];
+
 // Whenever an image is uploaded. Add image data to stagedImages & create a preview element
 // use FileReader API to grab contents of the uploaded images
 function stageImages(event){
@@ -56,7 +59,7 @@ function removeImage(imageData, event){
     checkInput();
 }
 
-//create post element on feed
+//render post elements on feed
 function post(){
     // create all the nested elements first
     let postContainer = document.createElement("div"),
