@@ -108,7 +108,7 @@ function post(){
         imageItem.src = image;
         imageItem.setAttribute('onclick', `previewImage({
             'previewImage': '${image}',
-            'text': '${document.querySelector('#text').value}',
+            'text': '${/.+/g.exec(document.querySelector('#text').value)[0]}',
             'time': '${currentDate}'
         })`)
         imagesContainer.appendChild(imageItem);
