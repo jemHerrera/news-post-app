@@ -12,6 +12,12 @@ function toggleElement(element, showElement){
     }
 }
 
+//create post. Open create-post modal, automatically focus on text area
+function createPost(){
+    toggleElement('.create-post', true);
+    document.querySelector('#text').focus();
+}
+
 // checks if there's any input in #text or #image-upload. If yes enable post button
 function checkInput(){
     if(document.querySelector('#text').value || stagedImages.length > 0) document.querySelector('#post').classList.remove('disabled');
@@ -104,11 +110,12 @@ function post(){
     //add uploaded images to imagesContainer
     //include onclick parameters for view-image, such as image src, time and post text
     stagedImages.forEach(image => {
-        var imageItem = document.createElement('img');
+        let imageItem = document.createElement('img'),
+            text = document.querySelector('#text').value ? /.+/g.exec(document.querySelector('#text').value)[0] : '';
         imageItem.src = image;
         imageItem.setAttribute('onclick', `previewImage({
             'previewImage': '${image}',
-            'text': '${/.+/g.exec(document.querySelector('#text').value)[0]}',
+            'text': '${text}',
             'time': '${currentDate}'
         })`)
         imagesContainer.appendChild(imageItem);
