@@ -1,7 +1,3 @@
-
-// where uploaded image src are stored before post
-var stagedImages = [];
-
 // show and hide modals
 // 2nd parameter: boolean. Add 'displayed' class if true; remove if false
 function toggleElement(element, showElement){
@@ -16,45 +12,40 @@ function toggleElement(element, showElement){
     }
 }
 
-//callback function onchange of text area or image upload
-//disable post button if no user input is detected
+// checks if there's any input in #text or #image-upload. If yes enable post button
 function checkInput(){
-    if(document.querySelector('#text').value
-    || stagedImages.length > 0) document.querySelector('#post').classList.remove('disabled');
+    if(document.querySelector('#text').value || stagedImages.length > 0) document.querySelector('#post').classList.remove('disabled');
     else document.querySelector('#post').classList.add('disabled');
 }
 
-//For textarea: Automatically adjust height as user types more content
+//For #text: Automatically adjust height as user types more content
 function autoHeight(element) {
     element.style.height = "5px";
     element.style.height = (element.scrollHeight)+"px";
 }
 
-// Event listener whenever an image is uploaded. Accepts multiple image upload
-// Add image data to stagedImages & create a preview element
-document.querySelector("#images-upload").addEventListener("change", function(event){
-
+// Whenever an image is uploaded. Add image data to stagedImages & create a preview element
+// use FileReader API to grab contents of the uploaded images
+function stageImages(event){
     Object.values(event.target.files).forEach(file => {
-        //use FileReader API to read contents of uploaded image
         let reader = new FileReader();
-        
-        reader.addEventListener("load",function(event){
-            let li = document.createElement("li");
 
+        reader.addEventListener("load", function(event){
+            //create preview image and append to #images-preview
+            let li = document.createElement("li");
             li.innerHTML = `
             <img class='thumbnail' src='${event.target.result}'/>
             <span onclick="removeImage('${event.target.result}', event)" class="material-icons remove">close</span>
             `;
             stagedImages.push(event.target.result)
-            // append element to the images-preview
             document.querySelector("#images-preview").appendChild(li);  
             // check if image has been added to staged images. if yes, enable post button   
             checkInput();         
         });
         
         reader.readAsDataURL(file);
-    })                      
-});
+    })    
+}
 
 // remove the image from stagedImages and delete upload preview
 // called when user clicks on 'x' button from the upload preview
@@ -64,9 +55,10 @@ function removeImage(imageData, event){
     document.querySelector("#images-upload").value='';
     checkInput();
 }
+
 //create post element on feed
 function post(){
-    // create all the nested elements
+    // create all the nested elements first
     let postContainer = document.createElement("div"),
         profile = document.createElement('img'),
         postDetails = document.createElement('div'),
@@ -97,9 +89,9 @@ function post(){
     // date
     let today = new Date(),
         months = ["January","February","March","April","May","June","July","August","September","October","November","December"],
-        currentTime = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
+        currentDate = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
     
-    timestamp.innerText = currentTime;
+    timestamp.innerText = currentDate;
     
     //append elements
     postContainer.append(profile, postDetails);
@@ -114,7 +106,7 @@ function post(){
         imageItem.setAttribute('onclick', `previewImage({
             'previewImage': '${image}',
             'text': '${document.querySelector('#text').value}',
-            'time': '${currentTime}'
+            'time': '${currentDate}'
         })`)
         imagesContainer.appendChild(imageItem);
     })
