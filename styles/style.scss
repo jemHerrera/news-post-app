@@ -151,7 +151,7 @@ body{
                     }
                 }
             }
-            .new-post-button{
+            .create-post-button{
                 @include button-1;
                 position: fixed;
                 bottom: 1.5em;
@@ -181,7 +181,7 @@ body{
             opacity: 1;
         }
 
-        &.new-post{
+        &.create-post{
             gap: 1em;
             overflow-y: auto;
             overflow-x: hidden;
@@ -299,7 +299,7 @@ body{
                 }
             }
         }
-        &.image-view{
+        &.view-image{
             // @include flex($align:center);
             .close{
                 position:absolute;
@@ -385,7 +385,7 @@ body{
             border-right: 1px solid $faint;
         }
 
-        main .feed .new-post-button{
+        main .feed .create-post-button{
             right:unset;
             left: 2em;
         }

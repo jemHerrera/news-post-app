@@ -1,18 +1,7 @@
 <!-- 
-COMPLETED
-Research on how to host locally using node
-install gulp and setup scss
-create wireframe on figma. Use helcim-ish brand style
-use social media as references for ux
-
-TO DO:
-figure out how to test on real device
-se landscape
-scale up to tablet. Desktop will be almost same as tablet
-reset initial height of text area after it expanded from previous long input
-Link to Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untitled?node-id=2%3A2
+Github pages: jemherrera.github.io/news-post-app
+Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untitled?node-id=2%3A2
 -->
-<!-- Github pages: jemherrera.github.io/news-post-app-->
 
 <!doctype html>
 <html>
@@ -32,23 +21,23 @@ Link to Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untit
       <nav>
         <span class="material-icons menu">menu</span>
         <h1 class="logo"><a href="https://jemherrera.github.io/news-post-app/"><span class="jem">jem.</span><span class="challenge">challenge</span></a></h1>
-        <a href="https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Jem's-Helcim-Challenge?node-id=0%3A1" target="_blank"><img class="profile-picture" src="icon.png"></a>
+        <a href="#"><img class="profile-picture" src="icon.png"></a>
       </nav>
 
       <!-- 
         <main> contains 2 main panels: intro and feed
-        Intro: Display initially, when no posts are added yet. Remove once posts are added
+        Intro: Displays initially, when no posts are added yet. Remove once posts are added
         Feed: Contains all the posts. Display only if a single post exists. 
       -->
       <main>
         <div class="intro">
           <h2>What's on your mind? Compose a post to get started..</h2>
-          <button onclick="toggleElement('.new-post', true)">Create a new post</button>
+          <button onclick="toggleElement('.create-post', true)">Create a new post</button>
         </div>
         <div class="feed">
           <div class="feed-container">
             <!-- 
-            Posts are rendered here via js. each post should look like this:
+            Posts are rendered here via js. each post would look like this:
             <div class="post">
               <img class="profile" src="icon.png">
               <div class="post-details">
@@ -63,12 +52,12 @@ Link to Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untit
             </div>
           -->
           </div>
-          <button class="new-post-button" onclick="toggleElement('.new-post', true)">Create a new post</button>
+          <button class="create-post-button" onclick="toggleElement('.create-post', true)">Create a new post</button>
         </div>
       </main>
 
-      <!-- New Post Modal: Display when user clicks on new post button. Contains the form to add text, image or both.-->
-      <aside class="new-post">
+      <!-- Create Post Modal: Display when user clicks on create-post-button. Contains the form to add text and images.-->
+      <aside class="create-post">
         <header>
           <button class="cancel" onclick="resetInput()">Cancel</button>
           <button id="post" class="disabled" onclick="post()">Post</button>
@@ -88,13 +77,13 @@ Link to Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untit
         </footer>
       </aside>
 
-      <!-- Image View Modal: Show full image. Display when user clicks on an image on the feed -->
-      <aside class="image-view">
-        <span class="material-icons close" onclick="toggleElement('.image-view', false)">close</span>
+      <!-- Image View Modal: Show full image. Display when user clicks an image from the feed -->
+      <aside class="view-image">
+        <span class="material-icons close" onclick="toggleElement('.view-image', false)">close</span>
         <div class="image-wrapper">
           <img class="preview-image" src="">
         </div>
-        <div class="preview-details" onclick="toggleElement('.image-view', false)">
+        <div class="preview-details" onclick="toggleElement('.view-image', false)">
           <img class="profile" src="icon.png">
           <div class="post-details">
             <div class="preview-header">

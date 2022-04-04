@@ -107,7 +107,7 @@ function post(){
     postHeader.append(username, handle, timestamp);
 
     //add uploaded images to imagesContainer
-    //include onclick parameters for image-view, such as image src, time and post text
+    //include onclick parameters for view-image, such as image src, time and post text
     stagedImages.forEach(image => {
         var imageItem = document.createElement('img');
         imageItem.src = image;
@@ -124,13 +124,13 @@ function post(){
     if(document.querySelector('.intro')) document.querySelector('.intro').remove();
     document.querySelector('.feed').classList.add('display');
 
-    //clear new-post modal
+    //clear create-post modal
     resetInput();
 }
 
-//clear all inputs, hide new-post modal and empty stagedImages variable
+//clear all inputs, hide create-post modal and empty stagedImages variable
 function resetInput(){
-    toggleElement('.new-post', false);
+    toggleElement('.create-post', false);
     document.querySelector('#text').value = '';
     document.querySelector('#images-upload').value = '';
     stagedImages = [];
@@ -146,7 +146,7 @@ function resetInput(){
 
 //when user clicks on an image from the feed, display image view modal
 function previewImage(object){
-    toggleElement('.image-view', true);
+    toggleElement('.view-image', true);
     document.querySelector('.preview-image').src = object.previewImage;
     document.querySelector('.preview-timestamp').innerText = object.time;
     document.querySelector('.preview-text').innerText = object.text;
