@@ -5,12 +5,3 @@ Link to Figma Prototype: https://www.figma.com/file/ubkjHeHkAuyMJCBNsLHlMp/Untit
 Goal of this project:
 Implement a visually appealing user interface where a user can post images and photos on a news feed.
 Develop an intuitive UX solution that lets users upload text, photos, or both.
-
-Functionality
-Implement a publish functionality that lets users post text and images on the news feed. ● Must be able to handle multiple submissions to fill up the page.
-- Every submit must print a submission date with the format: August 23, 2020. Each submission must be able to handle:
-○ Text
-○ Image
-○ Text and image
-- The buttons/menu on the top header does not need to have links nor functionalities.
--The resulting page should be displayed and work smoothly on any smartphone device.
